@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Análisis de Alumnos - Sistema Profesional</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>📊 Panel de Análisis de Alumnos</h1>
+                <p class="subtitle">Sistema profesional de estadísticas académicas</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-export" onclick="exportarPDF()">📥 Descargar PDF</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" id="dashboard">
+        
+        <!-- Estadísticas Principales -->
+        <section class="estadisticas-section">
+            <h2>Estadísticas Principales</h2>
+            <div class="stats-grid">
+                <div class="stat-card stat-promedio">
+                    <div class="stat-icon">📈</div>
+                    <h3>Promedio General</h3>
+                    <p class="stat-value" id="promedio">0.00</p>
+                    <p class="stat-label">Nota Promedio</p>
+                </div>
+                <div class="stat-card stat-mejor">
+                    <div class="stat-icon">🏆</div>
+                    <h3>Mejor Alumno</h3>
+                    <p class="stat-value" id="mejor-name">--</p>
+                    <p class="stat-label" id="mejor-nota">Nota: --</p>
+                </div>
+                <div class="stat-card stat-peor">
+                    <div class="stat-icon">📉</div>
+                    <h3>Peor Alumno</h3>
+                    <p class="stat-value" id="peor-name">--</p>
+                    <p class="stat-label" id="peor-nota">Nota: --</p>
+                </div>
+                <div class="stat-card stat-total">
+                    <div class="stat-icon">👥</div>
+                    <h3>Total Alumnos</h3>
+                    <p class="stat-value" id="total-alumnos">0</p>
+                    <p class="stat-label">Estudiantes registrados</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gráfico de Barras -->
+        <section class="graficos-section">
+            <h2>Distribución de Calificaciones</h2>
+            <div class="grafico-container">
+                <div class="grafico-barras" id="grafico-barras">
+                    <!-- Las barras se generarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabla de Alumnos -->
+        <section class="tabla-section">
+            <div class="tabla-header">
+                <h2>Lista de Alumnos</h2>
+                <div class="tabla-actions">
+                    <input type="text" id="buscar" placeholder="🔍 Buscar alumno..." class="input-buscar">
+                </div>
+            </div>
+            <div class="tabla-responsive">
+                <table class="tabla-alumnos">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Nota</th>
+                            <th>Calificación</th>
+                            <th>Progreso</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
+                        <!-- Se llenará dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Agregar Alumno -->
+        <section class="form-section">
+            <h2>Agregar Nuevo Alumno</h2>
+            <form id="form-alumno" class="form-grupo">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Alumno:</label>
+                        <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nota">Calificación (0-10):</label>
+                        <input type="number" id="nota" min="0" max="10" step="0.1" placeholder="Ej: 8.5" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-submit">➕ Agregar Alumno</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Resumen Estadístico Detallado -->
+        <section class="resumen-section">
+            <h2>Resumen Estadístico Detallado</h2>
+            <div class="resumen-grid">
+                <div class="resumen-card">
+                    <h4>Aprobados (≥6)</h4>
+                    <p class="resumen-valor" id="aprobados">0</p>
+                </div>
+                <div class="resumen-card">
+                    <h4>Suspensos (&lt;6)</h4>
+                    <p class="resumen-valor" id="suspensos">0</p>
+                </div>
+                <div class="resumen-card">
+                    <h4>Nota Máxima</h4>
+                    <p class="resumen-valor" id="nota-maxima">0.00</p>
+                </div>
+                <div class="resumen-card">
+                    <h4>Nota Mínima</h4>
+                    <p class="resumen-valor" id="nota-minima">0.00</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Sistema de Análisis de Alumnos - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
